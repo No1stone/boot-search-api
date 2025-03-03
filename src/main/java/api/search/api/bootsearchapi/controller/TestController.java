@@ -1,5 +1,6 @@
 package api.search.api.bootsearchapi.controller;
 
+import api.search.api.bootsearchapi.service.DuckduckGoService;
 import api.search.api.bootsearchapi.service.GoogleSearchApiService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,11 +16,16 @@ import java.util.Map;
 public class TestController {
 
     private final GoogleSearchApiService googleSearchApiService;
+    private final DuckduckGoService duckduckGoService;
 
     @GetMapping("/google/{text}")
-    public Map<String, Object> test(@PathVariable String text) {
+    public Map<String, Object> test1(@PathVariable String text) {
        return googleSearchApiService.search(text);
     }
 
+    @GetMapping("/duck/{text}")
+    public String test2(@PathVariable String text) {
+        return duckduckGoService.search(text);
+    }
 
 }
